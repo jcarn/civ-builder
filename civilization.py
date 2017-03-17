@@ -1,11 +1,13 @@
 import random
-from CivMap import CivMap
-from Tile import Tile
+from civ_map import CivMap
+import civ_utility
+from tile import Tile
 
 class Civilization():
 
-    def __init__(self, name, game_map, start_location):
-        self.name = name
+    #init function. game_map is a required param, all the others can be randomly genned
+    def __init__(self, game_map, name = None, start_location = None, color = None):
+        self.name = name if name != None else CivUtility.getRandomName()
         self.game_map = game_map
         self.owned_tiles = [game_map.tile_at(start_location)]
         self.new_tiles = [self.owned_tiles[0]]

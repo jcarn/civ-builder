@@ -18,7 +18,9 @@ def run():
     paused = False
     frames = 0
 
+    #game loop
     while True:
+        #check for all types of events
         for event in pygame.event.get():
             if event.type == QUIT:
                 print(str(frames))
@@ -30,6 +32,7 @@ def run():
                 if event.key == pygame.K_TAB:
                     for i in range(20): civ.expand()
 
+        #arbitrary expansion constant, replace soon
         for i in range(round(len(civ.owned_tiles) / 10)): civ.expand() 
         frames += 1
         draw_map(display_surface, game_map)
@@ -45,7 +48,7 @@ def draw_map(display_surface, game_map):
         y = MARGIN + (tile.loc[1] * (side_l))
         pygame.draw.rect(display_surface, GREEN if tile.is_owned else RED, (x, y, side_l, side_l))
 
-
+    #draw all tiles that have been changed, then remove them from the changed list
     for tile in game_map.updated_tiles:
             draw_tile(tile)
             game_map.updated_tiles.remove(tile)
