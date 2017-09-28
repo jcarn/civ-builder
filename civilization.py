@@ -7,7 +7,7 @@ class Civilization():
 
     #init function. game_map is a required param, all the others can be randomly genned
     def __init__(self, game_map, name = None, start_location = None, color = None):
-        self.name = name if name != None else CivUtility.getRandomName()
+        self.name = name if name != None else CivUtility.get_random_name()
         self.game_map = game_map
         self.owned_tiles = [game_map.tile_at(start_location)]
         self.new_tiles = [self.owned_tiles[0]]
